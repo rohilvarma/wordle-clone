@@ -2,6 +2,7 @@
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { iconSize } from "@/lib/constants";
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false)
   const {theme, setTheme} = useTheme()
@@ -14,7 +15,7 @@ const ThemeToggle = () => {
   }
   return <div className="cursor-pointer" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
     {
-      theme === 'light' ? <IoMoon size={30}  /> : <IoSunny size={30}  />
+      theme === 'light' ? <IoMoon size={iconSize}  /> : <IoSunny size={iconSize}  />
     }
   </div>
 }
