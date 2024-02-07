@@ -10,12 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         bg_dark: "rgb(18, 18, 19)",
-        ring_gray_dark: "rgb(58,58, 60)",
-        focus_gray_dark: "rgb(86, 87, 88)",
+        focus_gray_dark: "rgb(58,58, 60)",
+        ring_gray_dark: "rgb(86, 87, 88)",
         key_gray_dark: "rgb(129, 131, 132)",
         text_dark: "rgb(248, 248, 248)",
-        ring_gray_light: "rgb(136, 138 ,140)",
-        focus_key_gray_light: "rgb(212, 214, 218)",
+        focus_gray_light: "rgb(136, 138 ,140)",
+        ring_key_gray_light: "rgb(212, 214, 218)",
+        correct_green: "rgb(107, 170, 100)",
+        correct_yellow: "rgb(209, 176, 54)"
       }
     },
   },
