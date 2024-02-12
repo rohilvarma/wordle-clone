@@ -11,7 +11,7 @@ const ResponseGrid = () => {
       {
         responseArray.map((word, wordIndex) => {
           return <div key={wordIndex} className="grid grid-cols-5 gap-x-1">
-            {word.map((letter, index) => <Cell key={index} keyCharacter={letter} isFocus={responseRow === wordIndex && responseColumn === index} />)}
+            {word.map((letter, index) => <Cell key={index} keyCharacter={letter} isFocus={responseRow === wordIndex && responseColumn === index} backgroundType={'neutral'} />)}
           </div>
         })
       }
