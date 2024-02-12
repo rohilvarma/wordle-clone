@@ -1,45 +1,20 @@
-import { numberOfAttempts, wordLength } from "@/lib/constants"
+'use client'
+
+import { useKeyStore } from "@/lib/store"
+import Cell from "./Cell"
+
 const ResponseGrid = () => {
+  const {responseArray, responseColumn, responseRow} = useKeyStore()
 
   return <main className="mt-8">
-    
-    <div className={`grid grid-cols-5 gap-y-1 place-items-center w-[300px] mx-auto`}>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-      <div className="w-14 h-14 border-2 border-ring_key_gray_light dark:border-ring_gray_dark"></div>
-
+    <div className={`grid gap-y-1 place-items-center w-[300px] mx-auto`}>
+      {
+        responseArray.map((word, wordIndex) => {
+          return <div key={wordIndex} className="grid grid-cols-5 gap-x-1">
+            {word.map((letter, index) => <Cell key={index} keyCharacter={letter} isFocus={responseRow === wordIndex && responseColumn === index} />)}
+          </div>
+        })
+      }
     </div>
   </main>
 }
