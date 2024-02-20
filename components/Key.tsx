@@ -1,52 +1,15 @@
-import { iconSize } from "@/lib/constants";
-import { IKey } from "@/lib/interfaces";
-import { FaBackspace } from "react-icons/fa";
-import { useKeyStore } from "@/lib/store";
+import { iconSize, getColors } from "@/utils/constants";
+import { ILetter } from "@/utils/interfaces";
+import { IoBackspace } from "react-icons/io5";
 
-const Key = ({ keyCharacter, backgroundType }: IKey) => {
-  const { updateResponseArray, checkWord, isUpdatable } = useKeyStore();
-  const eventHandler = (keyCharacter: string) => {
-    if (keyCharacter === "enter") {
-      if (!isUpdatable) {
-        const response = checkWord();
-      }
-    } else if (keyCharacter === "backspace") {
-      // removeLetter()
-    } else {
-      updateResponseArray(keyCharacter);
-    }
-  };
-
-  const getColors = (bgType: string) => {
-    switch (bgType) {
-      case "partial":
-        return "bg-partial_yellow_light dark:bg-partial_yellow_dark text-white";
-      case "correct":
-        return "bg-correct_green_light dark:bg-correct_green_dark text-white";
-      case "incorrect":
-        return "bg-incorrect_gray_light dark:bg-incorrect_focus_gray_dark text-white";
-      default:
-        return "bg-ring_key_gray_light dark:bg-key_gray_dark text-black dark:text-text_dark";
-    }
-  };
-
+const Key = ({ letter, letterBg }: ILetter) => {
   return (
     <div
-      onClick={() => eventHandler(keyCharacter.toLowerCase())}
-      className={`${
-        keyCharacter.toLowerCase() === "enter" ||
-        keyCharacter.toLowerCase() === "backspace"
-          ? "w-fit px-2"
-          : "w-8"
-      } font-semibold uppercase ${getColors(
-        backgroundType
-      )} py-4 text-center rounded-lg`}
+      className={`${getColors(letterBg, true)} uppercase rounded-lg px-2 py-4 ${
+        letter === "enter" || letter === "backspace" ? "w-fit px-2" : "w-8"
+      } text-center`}
     >
-      {keyCharacter.toLowerCase() === "backspace" ? (
-        <FaBackspace className="" size={iconSize - 5} />
-      ) : (
-        keyCharacter
-      )}
+      {letter === "backspace" ? <IoBackspace size={iconSize - 10} /> : letter}
     </div>
   );
 };

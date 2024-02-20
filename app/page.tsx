@@ -1,10 +1,9 @@
 import Keyboard from "@/components/Keyboard";
-import ResponseGrid from "@/components/ResponseGrid";
-import ThemeToggle from "@/components/ThemeToggle";
+import WordGrid from "@/components/WordGrid";
 
 export default function Home() {
-  return <div className="">
-    <ResponseGrid />
+  return <main className="">
+    <WordGrid />
     <Keyboard />
-  </div>
+  </main>
 }
