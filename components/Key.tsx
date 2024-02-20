@@ -1,4 +1,3 @@
-import { getColors } from "@/utils/server";
 import { iconSize } from "@/utils/constants";
 import { ILetter } from "@/utils/interfaces";
 import { IoBackspace } from "react-icons/io5";
@@ -9,7 +8,20 @@ import { MouseEvent } from "react";
 const Key = ({ letter, letterBg }: ILetter) => {
   const { isFull, push, checkWord, pop } = useResponseStore();
   const { keyboardChars } = useKeyboardStore();
-
+  const getColors = (bgType: string, isKey: boolean = false) => {
+    switch (bgType) {
+      case "partial":
+        return "bg-partial_yellow_light dark:bg-partial_yellow_dark text-white";
+      case "correct":
+        return "bg-correct_green_light dark:bg-correct_green_dark text-white";
+      case "incorrect":
+        return "bg-incorrect_gray_light dark:bg-incorrect_focus_gray_dark text-white";
+      default:
+        return isKey
+          ? "bg-ring_key_gray_light dark:bg-key_gray_dark text-black dark:text-text_dark"
+          : "";
+    }
+  };
   function handleClick(event: MouseEvent<HTMLElement>) {
     if (keyboardChars.some((obj) => obj.letter === letter)) {
       if (letter === "enter") {
