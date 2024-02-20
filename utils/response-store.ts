@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { IResponseStore } from "./interfaces";
-import { numberOfAttempts, wordLength, wordOfTheDay } from "./constants";
+import { numberOfAttempts, wordLength } from "./constants";
 import { useKeyboardStore } from "./keyboard-store";
+import { wordOfTheDay } from "./server";
 
 export const useResponseStore = create<IResponseStore>()((set, get) => ({
   responseArray: [[], [], [], [], [], []],

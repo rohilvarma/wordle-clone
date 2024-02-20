@@ -3,7 +3,7 @@
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { iconSize, wordOfTheDay } from "@/utils/constants";
+import { iconSize } from "@/utils/constants";
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);

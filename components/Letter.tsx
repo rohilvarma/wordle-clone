@@ -1,5 +1,5 @@
 import { ILetter } from "@/utils/interfaces";
-import { getColors } from "@/utils/constants";
+import { getColors } from "@/utils/server";
 const Letter = ({ letter, letterBg, isFocus }: ILetter) => {
   return (
     <div
